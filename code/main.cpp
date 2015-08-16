@@ -10,6 +10,7 @@ int main()
 {
     int a[6]={5,4,3,2,1,0};
     printf("%d\n",partition(a,0,5));
+    //github
     return 0;
 }
 

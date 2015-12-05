@@ -1,0 +1,33 @@
+#!/usr/bin/env python
+# coding=utf-8
+import operator
+from numpy import *
+
+def create_dataset():
+    group=array([[1.0,1,1],[1.0,1.0],[0,0],[0,0.1]])
+    label=['A','A','B','B']
+    return group,label
+'''group,label=create_dataset()
+print group, label
+'''
+#s6 = 'I realy like "python"!'
+#print s6
+"""if __name__=="__main__":
+    print "123"
+else:
+    print "456"
+"""
+dataset,labels=create_dataset()
+def classify0(inx,k):
+    datasetsize=dataset.shape[0]
+    diffmat=tile(inx,(datasetsize,1))-dataset
+    sq_diffmat=diffmat**2
+    sq_diatance=sq_diffmat.sum(axis=1)
+    diatance=sq_diatance**0.5
+    sorted_distance_indicies=diatance.argsort()
+    classcout={}
+    for i in range(k):
+        votelabel=labels[sorted_distance_indicies[i]]
+        classcout[votelabel]=classcout.get(votelabel,0)+1
+    a=sorted(classcout.items())
+    return a[0][0]

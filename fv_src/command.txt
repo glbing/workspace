@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#man手册
+man /home/glb/NBIS/Main/man/man1/mindtct.1 
+
+
+#生成细节点文件：
+/home/glb/NBIS/Main/bin/mindtct -b -m1 /home/glb/fingerprint_verification_1.1/finger_db/s0024301.wsq  /home/glb/fingerprint_verification_1.1/minutiae_db/test
+
+
+
+#～目录下面：
+
+#显示wsq文件
+/home/glb/NBIS/Main/bin/dpyimage s0024301.wsq
+
+
+#显示raw 文件
+/home/glb/NBIS/Main/bin/dpyimage -r  832,768,8，255 s0024301.raw
+
+
+#将wsq文件解压为raw文件
+/home/glb/NBIS/Main/bin/dwsq raw s0024301.wsq -r
+
+
+#将raw文件转化为jpeg文件
+/home/glb/NBIS/Main/bin/cjpegb 50 jpb s0024301.raw  -r 832,768,8
+
